@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <form action="/images/add" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="text" name="title"
+                               class="form-control" placeholder="Título">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="description"
+                               class="form-control" placeholder="Descripción"></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                            <input type="file" name="image"
+                                   class="custom-file-input" id="inputGroupFile01">
+                            <label for="inpuGroupFile01" class="custom-file-label">Elegir archivo</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">
+                        Subir foto
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Operaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each photos}}
+                    <tr>
+                        <td>{{title}}</td>
+                        <td>{{description}}</td>
+                        <td>
+                            <a href="{{imageUrl}}" target="_blank"
+                               class="btn btn-primary">Ver</a>
+                            <a href="/images/delete/{{_id}}" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
