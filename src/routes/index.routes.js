@@ -46,7 +46,7 @@ router.post('/images/add', async (req, res) => {
             public_id: result.public_id
         });
     
-        const photoSaved = await newPhoto.save();
+        await newPhoto.save();
         await fs.unlink(req.file.path); // Elimino el archivo de mi servidor
         res.redirect('/');
     } catch (error) {
@@ -56,6 +56,7 @@ router.post('/images/add', async (req, res) => {
 
 });
 
+// TO DO: Cambiar método delete con Method Override
 router.get('/images/delete/:photo_id', async (req, res) => {
     try {
         const {photo_id} = req.params;
